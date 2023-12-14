@@ -56,9 +56,7 @@ fn main() -> io::Result<()> {
                     handle_client(stream, clients_clone);
                 });
             }
-            Err(e) => {
-                eprintln!("Error accepting connection: {}", e);
-            }
+
         }
     }
 
