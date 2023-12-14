@@ -4,16 +4,7 @@ use std::thread;
 use std::sync::{Arc, Mutex};
 use rustyline::Editor;
 
-fn handle_client(mut stream: TcpStream, clients: Arc<Mutex<Vec<TcpStream>>>) {
-    let mut buffer = [0; 512];
-    let client_address = stream.peer_addr().expect("Failed to get client address");
 
-    println!("New connection from: {}", client_address);
-
-    {
-        let mut clients = clients.lock().expect("Failed to lock clients");
-        clients.push(stream.try_clone().expect("Failed to clone stream"));
-    }
 
     loop {
         match stream.read(&mut buffer) {
